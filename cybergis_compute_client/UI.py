@@ -334,8 +334,8 @@ class UI:
             if self.slurm[i] is not None:
                 w.append(self.slurm[i])
         self.slurm['vbox'] = widgets.VBox(w)
-        self.slurm['allocation'] = widgets.Text(placeholder='Specify Allocation', style=self.style)
-        self.slurm['partition'] = widgets.Text(placeholder='Specify Partition', style=self.style)
+        self.slurm['allocation'] = widgets.Text(placeholder='(Optional) Specify Allocation', style=self.style)
+        self.slurm['partition'] = widgets.Text(placeholder='(Optional) Specify Partition', style=self.style)
 
         # settings end
         self.slurm['accordion'] = widgets.Accordion(children=(widgets.VBox(children=(self.slurm['description'], self.slurm['vbox'], self.slurm['allocation'], self.slurm['partition'])),), selected_index=None)
