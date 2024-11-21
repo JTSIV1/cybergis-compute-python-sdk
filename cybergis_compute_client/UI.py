@@ -334,11 +334,11 @@ class UI:
             if self.slurm[i] is not None:
                 w.append(self.slurm[i])
         self.slurm['vbox'] = widgets.VBox(w)
-        self.slurm['allocation'] = widgets.HBox([widgets.Label("Allocation: "), widgets.Text(placeholder='(Optional) Specify Allocation', style=self.style)])
-        self.slurm['partition'] = widgets.HBox([widgets.Label("Partition: "), widgets.Text(placeholder='(Optional) Specify Partition', style=self.style)])
+        self.slurm['allocation'] = widgets.Text(placeholder='(Optional) Specify Allocation', style=self.style)
+        self.slurm['partition'] = widgets.Text(placeholder='(Optional) Specify Partition', style=self.style)
 
         # settings end
-        self.slurm['accordion'] = widgets.Accordion(children=(widgets.VBox(children=(self.slurm['description'], self.slurm['vbox'], widgets.Label("In most cases, specifying an allocation and partition is unnecessary. Do not input anything unless you have a non-default allocation and/or partition to specify."), self.slurm['allocation'], self.slurm['partition'])),), selected_index=None)
+        self.slurm['accordion'] = widgets.Accordion(children=(widgets.VBox(children=(self.slurm['description'], self.slurm['vbox'], widgets.Label("In most cases, specifying an allocation and partition is unnecessary. Do not input anything unless you have a non-default allocation and/or partition to specify."), widgets.HBox([widgets.Label("Allocation: "), self.slurm['allocation']]), widgets.HBox([widgets.Label("Partition: "), self.slurm['partition']]))),), selected_index=None)
         self.slurm['accordion'].set_title(0, 'Slurm Computing Configurations')
         with self.slurm['output']:
             display(self.slurm['accordion'])
